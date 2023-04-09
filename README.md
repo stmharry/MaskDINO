@@ -10,10 +10,12 @@ Mask DINO <img src="figures/dinosaur.png" width="30">
 [Feng Li*](https://fengli-ust.github.io/), [Hao Zhang*](https://scholar.google.com/citations?user=B8hPxMQAAAAJ&hl=zh-CN), [Huaizhe Xu](https://scholar.google.com/citations?user=zgaTShsAAAAJ&hl=en&scioq=Huaizhe+Xu), [Shilong Liu](https://www.lsl.zone/), [Lei Zhang](https://scholar.google.com/citations?hl=zh-CN&user=fIlGZToAAAAJ), [Lionel M. Ni](https://scholar.google.com/citations?hl=zh-CN&user=OzMYwDIAAAAJ), and [Heung-Yeung Shum](https://scholar.google.com.hk/citations?user=9akH-n8AAAAJ&hl=en).
 
 This repository is the official implementation of the [Mask DINO: Towards A Unified Transformer-based
-Framework for Object Detection and Segmentation](https://arxiv.org/abs/2206.02777) (DINO pronounced `daɪnoʊ' as in dinosaur). Our code is based on [detectron2](https://github.com/facebookresearch/detectron2).
+Framework for Object Detection and Segmentation](https://arxiv.org/abs/2206.02777) (DINO pronounced `daɪnoʊ' as in dinosaur). Our code is based on [detectron2](https://github.com/facebookresearch/detectron2). [detrex](https://github.com/IDEA-Research/detrex) version is opensource simultaneously.
 
 <details close>
 <summary> <font size=8><strong>News</strong></font> </summary>
+
+[2023/2] Mask DINO has been accepted to CVPR 2023!
 
 [2022/9] We release a toolbox [**detrex**](https://github.com/IDEA-Research/detrex) that provides state-of-the-art Transformer-based detection algorithms. It includes DINO **with better performance** and Mask DINO will also be released with detrex implementation. Welcome to use it! </br>
   - Supports Now: [DETR](https://arxiv.org/abs/2005.12872), [Deformble DETR](https://arxiv.org/abs/2010.04159), [Conditional DETR](https://arxiv.org/abs/2108.06152), [Group-DETR](https://arxiv.org/abs/2207.13085), [DAB-DETR](https://arxiv.org/abs/2201.12329), [DN-DETR](https://arxiv.org/abs/2203.01305), [DINO](https://arxiv.org/abs/2203.03605).
@@ -75,7 +77,7 @@ See [Results](#results).
 
 See [Preparing Datasets for MaskDINO](datasets/README.md).
 
-See [Getting Started](#getting-started).
+See [Getting Started](#getting-started-1).
 
 See [More Usage](#more-usage).
 
@@ -208,7 +210,7 @@ We use hidden dimension `1024` and 100 queries for semantic segmentation.
 <th valign="bottom">mIoU</th>
 <th valign="bottom">download</th>
 
- <tr><td align="left">MaskDINO | <a href="configs/cityscapes/semantic-segmentation/maskdino_R50_bs16_90k_steplr.yaml">config</a></td>
+ <tr><td align="left">MaskDINO | <a href="configs/ade20k/semantic-segmentation/maskdino_R50_bs16_160k_steplr.yaml">config</a></td>
 <td align="center">ADE20K</td>
 <td align="center">R50</td>
 <td align="center">160k</td>
@@ -257,7 +259,7 @@ following command first.
   memory, you may also train with 16 GPUs with distributed training on two nodes.
 * We use total batch size 16 for all our models. If train on 1 GPU, you need to figure out learning rate and batch size by yourself
     ```sh
-  python train_net.py --num-gpus 1 SOLVER.IMS_PER_BATCH SET_TO_SOME_REASONABLE_VALUE SOLVER.BASE_LR SET_TO_SOME_REASONABLE_VALUE
+  python train_net.py --num-gpus 1 --config-file config_path SOLVER.IMS_PER_BATCH SET_TO_SOME_REASONABLE_VALUE SOLVER.BASE_LR SET_TO_SOME_REASONABLE_VALUE
   ```
 
 You can also refer to [Getting Started with Detectron2](https://github.com/facebookresearch/detectron2/blob/master/GETTING_STARTED.md) for full usage.
